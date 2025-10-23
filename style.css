@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    font-family: var(--fuente-principal);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'NeueMontreal';
+  src: url('./assets/fonts/NeueMontreal-Medium.woff2') format('woff2'),
+       url('./assets/fonts/NeueMontreal-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'RecklessNeue';
+  src: url('./assets/fonts/RecklessNeue-Medium.woff2') format('woff2'),
+       url('./assets/fonts/RecklessNeue-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+:root {
+  
+  /* color */
+  --auxiliary-acentos-1: #c55a26;
+  --auxiliary-acentos-2: #e3be86;
+  --auxiliary-hover: #faa82a;
+  --basics-black: #000000;
+  --basics-white: #f1f0ea;
+  --primary-fondo: var(--basics-white);
+  --primary-secciones-1: #112c50;
+  --secondary-secciones-2: #b9cade;
+  --secondary-secciones-3: #d7c2b6;
+  --text-on-dark: var(--basics-white);
+  --text-primary: var(--basics-black);
+
+  /* tamaños */
+
+  --padding-header: 10px;
+  --width-top-bar-content: 90%;
+  --width-top-bar: 100%;
+  --padding-top-bar: 10px;
+  --margin-top-bar-content: 0 auto;
+}
+/* Typography */
+
+:root {
+--fuente-principal: 'NeueMontreal', sans-serif;
+--fuente-secundaria: 'RecklessNeue', serif;
+}
+
+
+:root {
+  
+  /* number */
+  --size-button-text: 0.875rem;
+  --size-parrafo: 1rem;
+  --size-h4: 1.125rem;
+  --size-texto-destacado: 1.25rem;
+  --size-h3: 2rem;
+  --size-h2: 2.25rem;
+  --size-h1: 3.4375rem;
+  /* string */
+  --weight-parrafo: Regular;
+}
+/* Borders-SIzes */
+:root {
+  
+  /* number */
+  --radius-button-radius: 0.625rem;
+}
+
+.hero {
+    color: var(--basics-white);
+}
+
+.top-bar {
+    width: var(--width-top-bar);
+    background-color: var(--primary-secciones-1);
+    color: white;
+    padding: var(--padding-top-bar);
+    
+
+  }
+
+.top-bar-content a {
+   text-decoration: none;
+   color: var(--basics-white);
+}
+
+.top-bar-content {
+    width: var(--width-top-bar-content); 
+    margin: var(--margin-top-bar-content);
+    display: grid;
+    /* DOS columnas */
+    grid-template-columns: auto auto; 
+    justify-content: space-between;
+    align-items: center; 
+} 
+
+/* Para alinear los elementos DENTRO del grupo de la derecha */
+.elementos-final-header {
+    display: flex; /* Los pone uno al lado del otro */
+    align-items: center; /* Los centra verticalmente */
+    gap: 20px; /* Añade un espacio entre los idiomas y el teléfono */
+}
+
