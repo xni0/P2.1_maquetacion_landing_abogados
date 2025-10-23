@@ -1,31 +1,15 @@
+/* --- Configuración Global y Fuentes --- */
 body {
-    margin: 0;
-    font-family: var(--fuente-principal);
+  margin: 0;
+  font-family: var(--fuente-principal);
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-@font-face {
-  font-family: 'NeueMontreal';
-  src: url('./assets/fonts/NeueMontreal-Medium.woff2') format('woff2'),
-       url('./assets/fonts/NeueMontreal-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'RecklessNeue';
-  src: url('./assets/fonts/RecklessNeue-Medium.woff2') format('woff2'),
-       url('./assets/fonts/RecklessNeue-Medium.woff') format('woff');
-  font-weight: 500;
-  font-style: normal;
-}
-
-
+/* ... (Todo tu código @font-face y :root se mantiene igual) ... */
 :root {
-  
   /* color */
   --auxiliary-acentos-1: #c55a26;
   --auxiliary-acentos-2: #e3be86;
@@ -40,73 +24,180 @@ body {
   --text-primary: var(--basics-black);
 
   /* tamaños */
-
   --padding-header: 10px;
+  --padding--top-segunda-parte-header: 1em;
+  --padding-nav-links: 0;
+  --padding-top-hero-content: 3em;
+  --padding-bottom-hero-content:5em; 
+  --padding-btn: 12px 24px;
   --width-top-bar-content: 90%;
   --width-top-bar: 100%;
   --padding-top-bar: 10px;
+  --padding-top-nav-container: 20px;
+  --padding-hero-content-top: 5em;
+  --padding-hero-content-bottom: 5em;
+  --padding-segunda-parte-header: 2em;
+  --min-height-segunda-parte-header: 600px;
+
   --margin-top-bar-content: 0 auto;
-}
-/* Typography */
+  --margin-nav-container: 0 auto;
+  --margin-nav-links: 0;
+  --margin-top-hero-content-h1: 0.25em;
+  --margin-bottom-hero-content-h1: 0.4rem;
+  --margin-hero-content-p: 0 0 1.7em 0;
+  --gap-elementos-final-header: 20px;
+  --gap-nav-link: 25px;
+  --gap-hero-buttons: 20px;
 
-:root {
---fuente-principal: 'NeueMontreal', sans-serif;
---fuente-secundaria: 'RecklessNeue', serif;
-}
+  /* Typography */
+  --fuente-principal: 'NeueMontreal', sans-serif;
+  --fuente-secundaria: 'RecklessNeue', serif;
+  --font-style-italic: italic;
+  --font-weight-bold: bold;
 
-
-:root {
-  
   /* number */
   --size-button-text: 0.875rem;
-  --size-parrafo: 1rem;
+  --size-parrafo: 1.3rem;
   --size-h4: 1.125rem;
   --size-texto-destacado: 1.25rem;
   --size-h3: 2rem;
   --size-h2: 2.25rem;
-  --size-h1: 3.4375rem;
+  --size-h1: 5rem;
   /* string */
   --weight-parrafo: Regular;
-}
-/* Borders-SIzes */
-:root {
-  
-  /* number */
+
+  /* Borders-SIzes */
   --radius-button-radius: 0.625rem;
+
+  /* alineación */
+  --align-items-center: center;
 }
 
+/* --- Estilos del Header --- */
 .hero {
-    color: var(--basics-white);
+  color: var(--basics-white);
 }
 
 .top-bar {
-    width: var(--width-top-bar);
-    background-color: var(--primary-secciones-1);
-    color: white;
-    padding: var(--padding-top-bar);
-    
+  width: var(--width-top-bar);
+  background-color: var(--primary-secciones-1);
+  color: white;
+  /* El padding es solo vertical, el horizontal lo crea el grid */
+  padding: var(--padding-top-bar) 0;
 
-  }
+  /* Convertimos el padre (fondo azul) en un grid */
+  display: grid;
+  /* 3 columnas: [margen-izq] [contenido] [margen-der] */
+  grid-template-columns: 1fr var(--width-top-bar-content) 1fr;
+}
 
 .top-bar-content a {
-   text-decoration: none;
-   color: var(--basics-white);
+  text-decoration: none;
+  color: var(--basics-white);
 }
 
 .top-bar-content {
-    width: var(--width-top-bar-content); 
-    margin: var(--margin-top-bar-content);
-    display: grid;
-    /* DOS columnas */
-    grid-template-columns: auto auto; 
-    justify-content: space-between;
-    align-items: center; 
+  /* Colocamos este contenedor en la columna 2 (la central) */
+  grid-column: 2 / 3;
+
+  /* El grid interno para alinear el email/teléfono */
+  display: grid;
+  grid-template-columns: auto auto; 
+  justify-content: space-between;
+  align-items: var(--align-items-center); 
 } 
 
 /* Para alinear los elementos DENTRO del grupo de la derecha */
 .elementos-final-header {
-    display: flex; /* Los pone uno al lado del otro */
-    align-items: center; /* Los centra verticalmente */
-    gap: 20px; /* Añade un espacio entre los idiomas y el teléfono */
+  display: flex; 
+  align-items: center; 
+  gap: var(--gap-elementos-final-header);
 }
 
+/* --- Estilos del Hero (Fondo y Navegación) --- */
+.segunda-parte-header {
+  background-image: url(./assets/img/header-background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; 
+  min-height: var(--min-height-segunda-parte-header);
+  padding-bottom: var(--padding-segunda-parte-header); 
+
+  display: grid;
+  grid-template-columns: 1fr var(--width-top-bar-content) 1fr;
+}
+
+/* --- Contenedor del Nav (90% y centrado) --- */
+.nav-container {
+  grid-column: 2 / 3;
+  display: flex;
+  justify-content: space-between; 
+  align-items: var(--align-items-center); 
+  padding-top: var(--padding-top-nav-container); 
+  padding-bottom: var(--padding-top-nav-container);
+}
+
+/* --- Estilos para la lista de links --- */
+.nav-links {
+  display: flex;
+  list-style: none; 
+  padding: var(--padding-nav-links);
+  margin: var(--margin-nav-links);
+  gap: var(--gap-nav-link); 
+  font-weight: var(--font-weight-bold);
+}
+
+.nav-links a {
+  text-decoration: none; 
+  color: var(--basics-white); 
+}
+
+/* --- Estilos para el contenido del Hero --- */
+.hero-content {
+  grid-column: 2 / 3;
+  padding-top: var(--padding-hero-content-top); 
+  padding-bottom: var(--padding-hero-content-bottom); 
+  text-align: left;
+}
+
+.hero-content .span-hero-content{
+  font-style: var(--font-style-italic);
+  font-weight: var(--font-style-bold);
+}
+
+.hero-content h1 {
+  font-family: var(--fuente-secundaria);
+  font-size: var(--size-h1);
+  color: var(--text-on-dark);
+  margin-top: var(--margin-top-hero-content-h1);
+  margin-bottom: var(--margin-bottom-hero-content-h1);
+}
+
+.hero-content p {
+  font-family: var(--fuente-principal);
+  font-size: var(--size-parrafo);
+  color: var(--text-on-dark);
+  margin: var(--margin-hero-content-p);
+}
+
+.hero-buttons {
+  display: flex; 
+  gap: var(--gap-hero-buttons);
+}
+
+.btn {
+  padding: var(--padding-btn);
+  text-decoration: none;
+  font-weight: var(--font-weight-bold);
+  border-radius: var(--radius-button-radius);
+}
+
+.btn.primary {
+  background-color: var(--auxiliary-acentos-2);
+  color: var(--basics-black);
+}
+
+.btn.secondary {
+  background-color: var(--auxiliary-acentos-1);
+  color: var(--basics-white);
+}
