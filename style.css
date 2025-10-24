@@ -1,4 +1,4 @@
-/* --- Configuración Global y Fuentes --- */
+
 body {
   margin: 0;
   font-family: var(--fuente-principal);
@@ -8,12 +8,28 @@ body {
   box-sizing: border-box;
 }
 
-/* ... (Todo tu código @font-face y :root se mantiene igual) ... */
+@font-face {
+  font-family: 'NeueMontreal';
+  src: url('./assets/fonts/NeueMontreal-Regular.woff2') format('woff2'),
+       url('./assets/fonts/NeueMontreal-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'RecklessNeue';
+  src: url('./assets/fonts/RecklessNeue-Regular.woff2') format('woff2'),
+       url('./assets/fonts/RecklessNeue-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* ... (Todo tu código @font-face se mantiene igual) ... */
 :root {
   /* color */
   --auxiliary-acentos-1: #c55a26;
   --auxiliary-acentos-2: #e3be86;
   --auxiliary-hover: #faa82a;
+  --azul-secundario: #2a647f;
   --basics-black: #000000;
   --basics-white: #f1f0ea;
   --primary-fondo: var(--basics-white);
@@ -29,25 +45,30 @@ body {
   --padding-nav-links: 0;
   --padding-top-hero-content: 3em;
   --padding-bottom-hero-content:5em; 
-  --padding-btn: 12px 24px;
+  --padding-btn: 10px 20px;
+  --padding-btn-klaus: 7px 10px;
   --width-top-bar-content: 90%;
   --width-top-bar: 100%;
+  --width-nav-img: 150px;
+  --width-nav-container-img: 150px;
   --padding-top-bar: 10px;
   --padding-top-nav-container: 20px;
   --padding-hero-content-top: 5em;
   --padding-hero-content-bottom: 5em;
   --padding-segunda-parte-header: 2em;
+  --page-margin-horizontal: 120px;
   --min-height-segunda-parte-header: 600px;
 
   --margin-top-bar-content: 0 auto;
   --margin-nav-container: 0 auto;
   --margin-nav-links: 0;
   --margin-top-hero-content-h1: 0.25em;
-  --margin-bottom-hero-content-h1: 0.4rem;
+  --margin-bottom-hero-content-h1: 0.5rem;
   --margin-hero-content-p: 0 0 1.7em 0;
   --gap-elementos-final-header: 20px;
   --gap-nav-link: 25px;
   --gap-hero-buttons: 20px;
+  --page-column-gap: 20px;
 
   /* Typography */
   --fuente-principal: 'NeueMontreal', sans-serif;
@@ -57,23 +78,52 @@ body {
 
   /* number */
   --size-button-text: 0.875rem;
-  --size-parrafo: 1.3rem;
-  --size-h4: 1.125rem;
+  --size-parrafo: 0.9rem;
+  --size-h4: 0.7rem;
   --size-texto-destacado: 1.25rem;
   --size-h3: 2rem;
   --size-h2: 2.25rem;
-  --size-h1: 5rem;
+  --size-h1: 2.6rem;
+  --font-size-nav-links: 0.7rem;
+  --font-size-btn-primary: 0.7rem;
+  --font-size-btn-secondary: 0.7rem;
+
+  --font-size-top-bar: 0.6rem;
+
   /* string */
   --weight-parrafo: Regular;
 
-  /* Borders-SIzes */
+  /* Borders*/
   --radius-button-radius: 0.625rem;
 
   /* alineación */
   --align-items-center: center;
+
+    
+  /* Espaciado de Secciones */
+  --spacing-section-vertical: 50px;
+  --padding-section-vertical: 50px;
+  --padding-section-horizontal: 40px;
+
+  /* Radios de Borde */
+  --radius-section: 12px;
+  --radius-image-about: 20px;
+
+
+  /* Tipografía Específica */
+  --size-h2-about: 1.5rem;
+  --padding-bottom-about-h2: 35px;
+  --margin-bottom-about-p: 1.2em;
+  --margin-top-about-btn: 1.5em;
+
+  --width-h2-pseudo: 33px;
+  --height-h2-pseudo: 5px;
+  --margin-bottom-h2-pseudo: 10px;
+
+  /* Alineación General */
+  --text-align-center: center;
 }
 
-/* --- Estilos del Header --- */
 .hero {
   color: var(--basics-white);
 }
@@ -82,14 +132,14 @@ body {
   width: var(--width-top-bar);
   background-color: var(--primary-secciones-1);
   color: white;
-  /* El padding es solo vertical, el horizontal lo crea el grid */
   padding: var(--padding-top-bar) 0;
-
-  /* Convertimos el padre (fondo azul) en un grid */
   display: grid;
-  /* 3 columnas: [margen-izq] [contenido] [margen-der] */
-  grid-template-columns: 1fr var(--width-top-bar-content) 1fr;
+  grid-template-columns: var(--page-margin-horizontal) repeat(12, 1fr) var(--page-margin-horizontal); 
+  column-gap: var(--page-column-gap); 
+  font-size: var(--font-size-top-bar);
 }
+
+
 
 .top-bar-content a {
   text-decoration: none;
@@ -97,24 +147,20 @@ body {
 }
 
 .top-bar-content {
-  /* Colocamos este contenedor en la columna 2 (la central) */
-  grid-column: 2 / 3;
+  grid-column: 2 / span 12;
 
-  /* El grid interno para alinear el email/teléfono */
-  display: grid;
-  grid-template-columns: auto auto; 
+  display: flex;
   justify-content: space-between;
   align-items: var(--align-items-center); 
 } 
 
-/* Para alinear los elementos DENTRO del grupo de la derecha */
 .elementos-final-header {
   display: flex; 
   align-items: center; 
   gap: var(--gap-elementos-final-header);
 }
 
-/* --- Estilos del Hero (Fondo y Navegación) --- */
+/* Estilos del Hero */
 .segunda-parte-header {
   background-image: url(./assets/img/header-background.jpg);
   background-size: cover;
@@ -124,20 +170,24 @@ body {
   padding-bottom: var(--padding-segunda-parte-header); 
 
   display: grid;
-  grid-template-columns: 1fr var(--width-top-bar-content) 1fr;
+  grid-template-columns: var(--page-margin-horizontal) repeat(12, 1fr) var(--page-margin-horizontal);
+  column-gap: var(--page-column-gap); 
+  align-content: start;
 }
 
-/* --- Contenedor del Nav (90% y centrado) --- */
 .nav-container {
-  grid-column: 2 / 3;
+  grid-column: 2 / span 12;
   display: flex;
-  justify-content: space-between; 
-  align-items: var(--align-items-center); 
-  padding-top: var(--padding-top-nav-container); 
+  justify-content: space-between;
+  align-items: var(--align-items-center);
+  padding-top: var(--padding-top-nav-container);
   padding-bottom: var(--padding-top-nav-container);
 }
 
-/* --- Estilos para la lista de links --- */
+.nav-container img {
+  width: var(--width-nav-container-img);
+}
+
 .nav-links {
   display: flex;
   list-style: none; 
@@ -145,6 +195,7 @@ body {
   margin: var(--margin-nav-links);
   gap: var(--gap-nav-link); 
   font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-nav-links);
 }
 
 .nav-links a {
@@ -152,9 +203,10 @@ body {
   color: var(--basics-white); 
 }
 
-/* --- Estilos para el contenido del Hero --- */
 .hero-content {
-  grid-column: 2 / 3;
+
+  grid-column: 2 / span 12;
+  
   padding-top: var(--padding-hero-content-top); 
   padding-bottom: var(--padding-hero-content-bottom); 
   text-align: left;
@@ -195,9 +247,131 @@ body {
 .btn.primary {
   background-color: var(--auxiliary-acentos-2);
   color: var(--basics-black);
+  font-size: var(--font-size-btn-primary);
 }
 
 .btn.secondary {
   background-color: var(--auxiliary-acentos-1);
   color: var(--basics-white);
+  font-size: var(--font-size-btn-secondary);
+}
+
+
+main.page-container {
+  display: grid;
+  
+  /* Aplicamos el MISMO grid que tiene el header */
+  grid-template-columns: var(--page-margin-horizontal) repeat(12, 1fr) var(--page-margin-horizontal); 
+  column-gap: var(--page-column-gap); 
+  width: 100%;
+  box-sizing: border-box;
+  row-gap: var(--spacing-section-vertical);
+}
+
+.about{
+
+  grid-column: 3 / span 10; 
+
+  width: auto;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: var(--spacing-section-vertical); 
+  margin-bottom: var(--spacing-section-vertical);
+}
+
+.services,
+.team,
+.testimonials,
+.contact-form,
+.location {
+  grid-column: 2 / span 12; 
+
+  width: auto;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: var(--spacing-section-vertical); 
+  margin-bottom: var(--spacing-section-vertical);
+}
+
+.about {
+  padding: var(--padding-section-vertical) var(--padding-section-horizontal);
+  border-radius: var(--radius-section);
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); 
+  column-gap: var(--page-column-gap); 
+  align-items: var(--align-items-center); 
+}
+.about article {
+  grid-column: 1 / span 6; 
+}
+.about aside {
+  grid-column: 8 / span 5; 
+  
+}
+
+.about img {
+  border-radius: var(--radius-image-about);
+  grid-column: 1 / -1;
+  width: 100%; 
+  height: auto; 
+  display: block;
+}
+
+.about article h2 {
+  font-size: var(--size-h2-about);
+  padding-bottom: var(--padding-bottom-about-h2);
+  font-family: var(--fuente-secundaria);
+}
+
+.about article p {
+  font-size: var(--font-size-nav-links); 
+  margin-bottom: var(--margin-bottom-about-p);
+}
+
+/* selector para poner linea azul en el h2*/
+.about article h2::before {
+  content: '';
+  display: block;
+  width: var(--width-h2-pseudo);
+  height: var(--height-h2-pseudo);
+  background-color: var(--azul-secundario);
+  margin-bottom: var(--margin-bottom-h2-pseudo);
+}
+
+.about article .btn.klaus {
+  display: inline-block;
+  margin-top: var(--margin-top-about-btn);
+}
+
+
+/* Estilos de OTRAS secciones */
+.services {
+  padding: var(--padding-section-vertical) var(--padding-section-horizontal);
+  text-align: var(--text-align-center);
+  border-radius: var(--radius-section);
+}
+
+.team {
+  padding: var(--padding-section-vertical) var(--padding-section-horizontal);
+  border-radius: var(--radius-section);
+  background-color: var(--background-section-2);
+}
+
+.testimonials {
+  padding: var(--padding-section-vertical) var(--padding-section-horizontal);
+  border-radius: var(--radius-section);
+}
+
+.contact-form {
+  padding: var(--padding-section-vertical) var(--padding-section-horizontal);
+  border-radius: var(--radius-section);
+}
+
+.location {
+  padding: var(--padding-section-vertical) var(--padding-section-horizontal);
+  border-radius: var(--radius-section);
 }
