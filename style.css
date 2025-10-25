@@ -49,6 +49,7 @@ body {
   --padding-btn-klaus: 7px 10px;
   --padding-none: 0;
   --margin-none: 0;
+  --margin-top-team-btn: 2.5em;
   --position-relative: relative;
   --position-absolute: absolute;
   --width-top-bar-content: 90%;
@@ -71,6 +72,7 @@ body {
   --margin-bottom-hero-content-h1: 0.5rem;
   --margin-hero-content-p: 0 0 1.7em 0;
   --gap-elementos-final-header: 20px;
+  --gap-team-container: 20px;
   --gap-nav-link: 25px;
   --gap-hero-buttons: 20px;
 
@@ -91,10 +93,22 @@ body {
   --size-h2: 2.25rem;
   --size-h1: 2.6rem;
   --font-size-nav-links: 0.7rem;
+  --font-size-team-intro: 0.9rem;
+  --font-size-team-h3: 1.8rem; 
+  --font-size-team-h4: 1rem;   
+  --font-size-team-p: 0.8rem;
   --font-size-btn-primary: 0.7rem;
   --font-size-btn-secondary: 0.7rem;
   --font-size-intro-h3: 1.7rem;
   --font-size-intro-p: 0.7rem;
+  --margin-top-team-btn: 2.5em;
+  --padding-team-container: 30px;
+  --font-size-team-intro-p: 0.8rem;
+  --margin-bottom-team-intro: 1.7em;
+  --gap-team-container: 20px; /* (Ya tenías esta variable, asegúrate de que tenga un valor) */
+  --font-size-team-h4: 1rem;
+  --margin-team-h4: 0.5em 0;
+  --font-size-team-p: 0.6rem;
 
 
   --width-viewport: 100vw;
@@ -106,7 +120,6 @@ body {
   --height-services-image-bg: 100%;
 
 
-  --object-fit-cover: cover;
 
   --z-index-foreground: 2;
   --max-width-superimposed-text: 800px;
@@ -114,7 +127,9 @@ body {
   --position-absolute-offset: 0;
   --z-index-background: 1;
   --width-full: 100%;
-  --radius-none: 0;
+
+  --radius-team-image: 8px;
+
   --filter-brightness-image: brightness(0.6);
 
   --font-size-top-bar: 0.6rem;
@@ -145,6 +160,7 @@ body {
   --size-h2-about: 1.5rem;
   --padding-bottom-about-h2: 35px;
   --margin-bottom-about-p: 1.2em;
+  --margin-bottom-team-intro: 2.5em;
   --margin-top-about-btn: 1.5em;
 
   --width-h2-pseudo: 33px;
@@ -459,9 +475,89 @@ main.page-container {
 }
 
 .team {
-  padding: var(--padding-section-vertical) var(--padding-section-horizontal);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--page-column-gap);
+  align-items: start;
+
+}
+
+
+.team-text-wrapper {
+  grid-column: 1 / span 3;
+}
+
+
+.team-text-wrapper h3 {
+  font-family: var(--fuente-secundaria);
+  font-size: var(--size-h2-about); 
+  color: var(--basics-black);
+  margin: var(--margin-none);
+}
+
+
+.team-text-wrapper h3::before {
+  content: '';
+  display: block;
+  width: var(--width-h2-pseudo);
+  height: var(--height-h2-pseudo);
+  background-color: var(--azul-secundario);
+  margin-bottom: var(--margin-bottom-h2-pseudo);
+}
+
+
+.team-text-wrapper .btn {
+  display: inline-block; 
+  margin-top: var(--margin-top-team-btn);
+}
+
+
+.team-members {
+  grid-column: 5 / span 9;
+  
+  background-color: var(--secondary-secciones-2);
   border-radius: var(--radius-section);
-  background-color: var(--background-section-2);
+  padding: var(--padding-team-container);
+}
+
+
+.team-intro {
+  font-family: var(--fuente-principal);
+  font-size: var(--font-size-team-intro-p);
+  color: var(--basics-black);
+  margin: var(--margin-none);
+  margin-bottom: var(--margin-bottom-team-intro);
+}
+
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-team-container);
+}
+
+
+.team-grid article {
+  text-align: left;
+}
+
+.team-grid article img {
+  width: var(--width-full); 
+  height: auto;
+}
+
+.team-grid article h4 {
+  font-family: var(--fuente-secundaria);
+  font-size: var(--font-size-team-h4);
+  color: var(--basics-black);
+  margin: var(--margin-team-h4);
+}
+
+.team-grid article p {
+  font-family: var(--fuente-principal);
+  font-size: var(--font-size-team-p);
+  color: var(--basics-black);
+  margin: var(--margin-none);
 }
 
 .testimonials {
