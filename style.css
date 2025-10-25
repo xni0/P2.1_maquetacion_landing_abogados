@@ -78,6 +78,16 @@ body {
 
   --page-column-gap: 20px;
 
+  --background-testimonials: var(--primary-secciones-1); 
+  --background-testimonial-card: var(--basics-white); 
+  --margin-bottom-testimonials-h3: 1.7em;
+  --gap-testimonials-grid: 90px; 
+  --padding-testimonial-card: 30px;
+  --font-size-testimonial-p: 0.9rem;
+  --font-style-testimonial-p: italic;
+  --margin-top-testimonial-footer: 1.5em;
+  --font-size-testimonial-footer: 0.8rem;
+
   /* Typography */
   --fuente-principal: 'NeueMontreal', sans-serif;
   --fuente-secundaria: 'RecklessNeue', serif;
@@ -148,7 +158,7 @@ body {
     
   /* Espaciado de Secciones */
   --spacing-section-vertical: 50px;
-  --padding-section-vertical: 50px;
+  --padding-section-vertical: 40px;
   --padding-section-horizontal: 40px;
 
   /* Radios de Borde */
@@ -338,7 +348,6 @@ main.page-container {
 
 .services,
 .team,
-.testimonials,
 .contact-form,
 .location {
   grid-column: 2 / span 12; 
@@ -561,8 +570,72 @@ main.page-container {
 }
 
 .testimonials {
-  padding: var(--padding-section-vertical) var(--padding-section-horizontal);
-  border-radius: var(--radius-section);
+  grid-column: 1 / -1;
+
+  padding-top: var(--padding-section-vertical);
+  padding-bottom: var(--padding-section-vertical);
+  padding-left: 0;
+  padding-right: 0;
+  background-color: var(--background-testimonials);
+  
+  display: grid;
+  grid-template-columns: var(--page-margin-horizontal) repeat(12, 1fr) var(--page-margin-horizontal);
+  column-gap: var(--page-column-gap);
+}
+
+.testimonials h3 {
+  grid-column: 2 / span 12; 
+  
+  font-family: var(--fuente-secundaria);
+  font-size: var(--size-h2-about);
+  color: var(--basics-white);
+  margin: var(--margin-none);
+  margin-bottom: var(--margin-bottom-testimonials-h3);
+}
+
+.testimonials h3::before {
+  content: '';
+  display: block;
+  width: var(--width-h2-pseudo);
+  height: var(--height-h2-pseudo);
+  background-color: var(--azul-secundario);
+  margin-bottom: var(--margin-bottom-h2-pseudo);
+}
+
+.testimonials-container {
+  grid-column: 2 / span 12; 
+  
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-testimonials-grid);
+}
+
+.testimonials blockquote {
+  background-color: var(--background-testimonial-card);
+  padding: var(--padding-testimonial-card);
+  margin: var(--margin-none);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.testimonials blockquote p {
+  font-family: var(--fuente-principal);
+  font-size: var(--font-size-testimonial-p);
+  font-style: var(--font-style-testimonial-p);
+  color: var(--basics-black);
+  margin: var(--margin-none);
+  line-height: 1.6;
+}
+
+.testimonials blockquote footer {
+  font-family: var(--fuente-principal);
+  font-size: var(--font-size-testimonial-footer);
+  font-style: normal;
+  font-weight: var(--font-weight-bold);
+  color: var(--basics-black);
+  margin-top: var(--margin-top-testimonial-footer);
 }
 
 .contact-form {
