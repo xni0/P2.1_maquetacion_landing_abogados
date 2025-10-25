@@ -47,6 +47,10 @@ body {
   --padding-bottom-hero-content:5em; 
   --padding-btn: 10px 20px;
   --padding-btn-klaus: 7px 10px;
+  --padding-none: 0;
+  --margin-none: 0;
+  --position-relative: relative;
+  --position-absolute: absolute;
   --width-top-bar-content: 90%;
   --width-top-bar: 100%;
   --width-nav-img: 150px;
@@ -60,6 +64,7 @@ body {
   --min-height-segunda-parte-header: 600px;
 
   --margin-top-bar-content: 0 auto;
+  --margin-bottom-intro-items: 1.5em;
   --margin-nav-container: 0 auto;
   --margin-nav-links: 0;
   --margin-top-hero-content-h1: 0.25em;
@@ -68,6 +73,7 @@ body {
   --gap-elementos-final-header: 20px;
   --gap-nav-link: 25px;
   --gap-hero-buttons: 20px;
+
   --page-column-gap: 20px;
 
   /* Typography */
@@ -87,6 +93,29 @@ body {
   --font-size-nav-links: 0.7rem;
   --font-size-btn-primary: 0.7rem;
   --font-size-btn-secondary: 0.7rem;
+  --font-size-intro-h3: 1.7rem;
+  --font-size-intro-p: 0.7rem;
+
+
+  --width-viewport: 100vw;
+  --offset-viewport: 50vw;
+  --offset-container: 50%;
+  --justify-content-center: center;
+  --overflow-hidden: hidden;
+
+  --height-services-image-bg: 100%;
+
+
+  --object-fit-cover: cover;
+
+  --z-index-foreground: 2;
+  --max-width-superimposed-text: 800px;
+  --min-height-hero-services: 450px;
+  --position-absolute-offset: 0;
+  --z-index-background: 1;
+  --width-full: 100%;
+  --radius-none: 0;
+  --filter-brightness-image: brightness(0.6);
 
   --font-size-top-bar: 0.6rem;
 
@@ -98,6 +127,8 @@ body {
 
   /* alineación */
   --align-items-center: center;
+  --display-flex: flex;
+  --flex-direction-column: column;
 
     
   /* Espaciado de Secciones */
@@ -121,7 +152,19 @@ body {
   --margin-bottom-h2-pseudo: 10px;
 
   /* Alineación General */
+  --align-self-flex-start: flex-start;
   --text-align-center: center;
+  --align-items-flex-start: flex-start; 
+
+  --min-height-hero-services: 450px;
+  --position-absolute-offset: 0;
+  --z-index-background: 1;
+  --z-index-foreground: 2;
+  --width-full: 100%;
+  --height-full: 100%;
+  --radius-none: 0;
+  --filter-brightness-image: brightness(0.6);
+  --max-width-superimposed-text: 800px;
 }
 
 .hero {
@@ -265,13 +308,10 @@ main.page-container {
   column-gap: var(--page-column-gap); 
   width: 100%;
   box-sizing: border-box;
-  row-gap: var(--spacing-section-vertical);
 }
 
 .about{
-
   grid-column: 3 / span 10; 
-
   width: auto;
   max-width: none;
   margin-left: 0;
@@ -348,11 +388,74 @@ main.page-container {
 }
 
 
-/* Estilos de OTRAS secciones */
 .services {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); 
+  column-gap: var(--page-column-gap);
+  padding: var(--padding-none); 
+  border-radius: var(--radius-section);
+}
+
+.services-intro {
+  position: var(--position-relative);
+  z-index: var(--z-index-foreground);
+  
+  color: var(--basics-white);
+  text-align: var(--text-align-center);
+  max-width: var(--max-width-superimposed-text);
+  padding: var(--padding-section-vertical) var(--padding-section-horizontal);
+  display: var(--display-flex);
+  flex-direction: var(--flex-direction-column);
+  align-items: var(--align-items-center); 
+}
+
+
+.services-intro h3,
+.services-intro p {
+  color: var(--basics-white);
+  margin: var(--margin-none);
+  margin-bottom: var(--margin-bottom-intro-items); 
+}
+
+.services-intro h3 {
+  font-size: var(--font-size-intro-h3);
+  font-family: var(--fuente-secundaria);
+}
+
+.services-intro .btn {
+  display: inline-block; 
+}
+
+
+.services-image {
+  grid-row: 1;
+  /* atajo para que ocupe todas las columnas*/
+  grid-column: 1 / -1;
+  
+  width: var(--width-viewport);
+  position: var(--position-relative);
+  /*Mueve este elemento 50% del ancho de la pantalla hacia la izquierda, 
+  y luego 50% del ancho de su contenedor hacia la derecha*/
+  margin-left: calc( (var(--offset-viewport) * -1) + var(--offset-container) );
+  display: var(--display-flex);
+  justify-content: var(--justify-content-center);
+  align-items: var(--align-items-center);
+  min-height: var(--min-height-hero-services); 
+}
+
+.services-image img {
+  position: var(--position-absolute);
+  z-index: var(--z-index-background);
+  width: var(--width-full);
+  height: var(--height-services-image-bg);
+}
+
+.services-content { 
+  grid-row: 2;
+  grid-column: 2 / span 10; 
   padding: var(--padding-section-vertical) var(--padding-section-horizontal);
   text-align: var(--text-align-center);
-  border-radius: var(--radius-section);
+  background-color: var(--background-section-1);
 }
 
 .team {
