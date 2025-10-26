@@ -4,6 +4,11 @@ body {
   font-family: var(--fuente-principal);
 }
 
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -23,15 +28,56 @@ body {
   font-style: normal;
 }
 
-/* ... (Todo tu código @font-face se mantiene igual) ... */
 :root {
 
-  --background-input-field: #E8E8E8; /* Color de fondo de los inputs */
+  --background-input-field: #E8E8E8; 
 --color-placeholder: #555;
 --padding-input-field: 1em;
 --radius-input-field: 8px;
 --gap-form-grid: 20px;
 --height-form-textarea: 180px;
+
+
+
+
+  --background-footer: var(--primary-secciones-1); 
+  --color-footer-text: var(--basics-white);
+  --color-footer-link-hover: var(--auxiliary-acentos-2);
+  --font-size-footer-h4: 0.7rem;
+  --font-size-footer-link: 0.8rem;
+  --font-size-footer-logo-h1: 1.5rem; 
+  --gap-footer-grid: var(--page-column-gap);
+  --margin-bottom-footer-h4: 1em;
+  --margin-bottom-footer-list-item: 0.7em;
+  --gap-social-media-links: 15px;
+  --padding-newsletter-input: 0.8em;
+  --radius-newsletter-input: 5px;
+  --border-newsletter-button: 1px solid var(--basics-white);
+  --padding-newsletter-button: 0.8em 1.5em;
+  --margin-top-newsletter-button: 1em;
+  --background-newsletter-button-hover: var(--basics-white);
+  --color-newsletter-button-hover: var(--primary-secciones-1);
+  --footer-icon-size: 24px; 
+
+
+--background-footer: var(--primary-secciones-1); 
+--color-footer-text: var(--basics-white);
+--color-footer-link-hover: var(--auxiliary-acentos-2); 
+--font-size-footer-h4: 0.9rem;
+--font-size-footer-link: 0.8rem;
+--font-size-footer-logo-h1: 1.5rem; 
+--gap-footer-grid: var(--page-column-gap);
+--margin-bottom-footer-h4: 1em;
+--margin-bottom-footer-list-item: 0.7em;
+--gap-social-media-links: 15px;
+--padding-newsletter-input: 0.8em;
+--radius-newsletter-input: 5px;
+--border-newsletter-button: 1px solid var(--basics-white);
+--padding-newsletter-button: 0.8em 1.5em;
+--margin-top-newsletter-button: 1em;
+--background-newsletter-button-hover: var(--basics-white);
+--color-newsletter-button-hover: var(--primary-secciones-1);
+--footer-icon-size: 24px; 
 
 
 --location-text-columns: 3; 
@@ -43,6 +89,24 @@ body {
 --font-size-google-link: 0.8rem;
 --margin-top-google-link: 0.5em;
 --text-align-right: right;
+
+/* --- Variables Footer Section --- */
+  --footer-info-columns: 2 / span 3;
+  --footer-nav-columns: 5 / span 2;
+  --footer-logo-columns: 7 / span 3;
+  --footer-newsletter-columns: 10 / span 4;
+  --footer-logo-max-width: 170px;
+  --footer-logo-margin-bottom: 1em;
+  --footer-logo-line-height: 1.2;
+
+  --text-decoration-none: none;
+  --list-style-none: none;
+  --border-none: none;
+  --display-block: block;
+  --font-weight-normal: normal;
+  --align-items-flex-end: flex-end;
+  --background-transparent: transparent;
+  --box-sizing-border-box: border-box;
 
 
 --padding-fullwidth-section: 0; 
@@ -59,14 +123,14 @@ body {
 --color-contact-placeholder: #666;
 --padding-location-p-top: 30px;
 
-/* Estilos para el botón "outline" */
+
 --border-btn-outline: 1px solid var(--basics-black);
 --color-btn-outline: var(--basics-black);
 --background-btn-outline-hover: var(--basics-black);
 --color-btn-outline-hover: var(--basics-white);
 
 /* Estilos de Location */
---font-size-location-h3: var(--size-h2-about); /* Reusamos variable */
+--font-size-location-h3: var(--size-h2-about); 
 --font-size-location-p: 1.1rem;
 --margin-top-location-p: 0.5em;
 --margin-top-location-map: 2em;
@@ -127,7 +191,7 @@ body {
 
   --background-testimonials: var(--primary-secciones-1); 
   --background-testimonial-card: var(--basics-white); 
-  --background-input-field: #E8E8E8; /* Color de fondo de los inputs */
+  --background-input-field: #E8E8E8; 
   --color-placeholder: #555;
   --padding-input-field: 1em;
   --radius-input-field: 8px;
@@ -179,7 +243,7 @@ body {
   --padding-team-container: 30px;
   --font-size-team-intro-p: 0.8rem;
   --margin-bottom-team-intro: 1.7em;
-  --gap-team-container: 20px; /* (Ya tenías esta variable, asegúrate de que tenga un valor) */
+  --gap-team-container: 20px; 
   --font-size-team-h4: 1rem;
   --margin-team-h4: 0.5em 0;
   --font-size-team-p: 0.6rem;
@@ -681,10 +745,9 @@ main.page-container {
 }
 
 .testimonials blockquote {
-  background-color: var(--background-testimonial-card);
+  background-color: var(--basics-white);
   padding: var(--padding-testimonial-card);
   margin: var(--margin-none);
-  border-radius: var(--radius-section);
   display: var(--display-flex);
   flex-direction: var(--flex-direction-column);
   justify-content: var(--justify-content-space-between); 
@@ -700,7 +763,7 @@ main.page-container {
   line-height: var(--line-height-testimonial-p); 
 }
 
-.testimonials blockquote footer {
+.testimonials blockquote span {
   font-family: var(--fuente-principal);
   font-size: var(--font-size-testimonial-footer);
   font-style: var(--font-style-normal); 
@@ -711,7 +774,6 @@ main.page-container {
 
 
 .contact-form {
-  padding: var(--padding-section-vertical) var(--padding-section-horizontal);
   border-radius: var(--radius-section);
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -801,14 +863,10 @@ main.page-container {
   padding: var(--padding-btn);
   border-radius: var(--radius-button-radius);
 }
-.btn.outline:hover {
-  background-color: var(--background-btn-outline-hover);
-  color: var(--color-btn-outline-hover);
-}
+
 
 .location {
-  padding: var(--padding-section-vertical) var(--padding-section-horizontal);
-  border-radius: var(--radius-section);
+
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   column-gap: var(--page-column-gap);
@@ -875,6 +933,118 @@ main.page-container {
   text-decoration: none;
 }
 
-.google-maps-link:hover {
-  text-decoration: underline;
+
+footer {
+ 
+  grid-column: 1 / -1;
+  background-color: var(--background-footer);
+  color: var(--color-footer-text);
+
+  
+  display: grid;
+  grid-template-columns: var(--page-margin-horizontal) repeat(12, 1fr) var(--page-margin-horizontal);
+  column-gap: var(--page-column-gap);
+  
+ 
+  padding-top: var(--spacing-section-vertical);
+  padding-bottom: var(--spacing-section-vertical);
+}
+
+
+footer h4 {
+  font-family: var(--fuente-principal);
+  font-size: var(--font-size-footer-h4);
+  color: var(--color-footer-text);
+  margin: var(--margin-none) var(--margin-none) var(--margin-bottom-footer-h4) var(--margin-none);
+}
+
+footer a {
+  color: var(--color-footer-text);
+  text-decoration: var(--text-decoration-none);
+  font-size: var(--font-size-footer-link);
+}
+
+
+
+.footer-info {
+  grid-column: var(--footer-info-columns);
+  display: var(--display-flex);
+  flex-direction: var(--flex-direction-column);
+  gap: var(--margin-bottom-footer-list-item); 
+}
+
+.footer-nav {
+  grid-column: var(--footer-nav-columns);
+}
+
+.footer-nav ul {
+  margin: var(--margin-none);
+  padding: var(--padding-none);
+  list-style: var(--list-style-none);
+  display: var(--display-flex);
+  flex-direction: var(--flex-direction-column);
+  gap: var(--margin-bottom-footer-list-item);
+}
+
+
+.footer-logo {
+  grid-column: var(--footer-logo-columns);
+  display: var(--display-flex);
+  flex-direction: var(--flex-direction-column);
+  align-items: var(--align-items-center); 
+  text-align: var(--text-align-center);
+}
+
+.footer-logo img {
+  max-width: var(--footer-logo-max-width); 
+  font-family: var(--fuente-secundaria); 
+  font-size: var(--font-size-footer-logo-h1);
+  color: var(--color-footer-text);
+  margin: var(--margin-none) var(--margin-none) var(--footer-logo-margin-bottom) var(--margin-none);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--footer-logo-line-height);
+}
+
+.social-media {
+  display: var(--display-flex);
+  gap: var(--gap-social-media-links);
+}
+
+
+.social-media img {
+  display: var(--display-block);
+  width: var(--footer-icon-size);
+  height: var(--footer-icon-size);
+}
+
+
+.newsletter {
+  grid-column: var(--footer-newsletter-columns);
+}
+
+.newsletter form {
+  display: var(--display-flex);
+  flex-direction: var(--flex-direction-column);
+  align-items: var(--align-items-flex-end);
+}
+
+.newsletter input[type="email"] {
+  width: var(--width-full);
+  padding: var(--padding-newsletter-input);
+  border: var(--border-none);
+  background-color: var(--background-input-field); 
+  font-family: var(--fuente-principal);
+  font-size: var(--font-size-footer-link);
+  box-sizing: var(--box-sizing-border-box); 
+}
+
+.newsletter button {
+  background-color: var(--background-transparent);
+  border: var(--border-newsletter-button);
+  color: var(--color-footer-text);
+  padding: var(--padding-newsletter-button);
+  border-radius: var(--radius-button-radius); 
+  font-family: var(--fuente-principal);
+  font-size: var(--font-size-btn-primary); 
+  margin-top: var(--margin-top-newsletter-button);
 }
