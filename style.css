@@ -25,6 +25,53 @@ body {
 
 /* ... (Todo tu código @font-face se mantiene igual) ... */
 :root {
+
+  --background-input-field: #E8E8E8; /* Color de fondo de los inputs */
+--color-placeholder: #555;
+--padding-input-field: 1em;
+--radius-input-field: 8px;
+--gap-form-grid: 20px;
+--height-form-textarea: 180px;
+
+
+--location-text-columns: 3; 
+--location-map-columns: 8;  
+--location-gap-column: 1; 
+--font-size-google-link: 0.8rem;
+--margin-top-google-link: 0.5em;
+--text-align-right: right;
+--font-size-google-link: 0.8rem;
+--margin-top-google-link: 0.5em;
+--text-align-right: right;
+
+
+--padding-fullwidth-section: 0; 
+--grid-column-content-area: 2 / span 12; 
+--grid-template-columns-3-equal: repeat(3, 1fr);
+--justify-content-space-between: space-between;
+--line-height-testimonial-p: 1.6;
+--font-style-normal: normal;
+--margin-top-contact-p: 1rem;
+--line-height-contact-p: 1.5;
+--grid-template-columns-2-equal: repeat(2, 1fr);
+--gap-contact-form-internal: 1.5rem;
+--min-height-contact-textarea: 120px;
+--color-contact-placeholder: #666;
+--padding-location-p-top: 30px;
+
+/* Estilos para el botón "outline" */
+--border-btn-outline: 1px solid var(--basics-black);
+--color-btn-outline: var(--basics-black);
+--background-btn-outline-hover: var(--basics-black);
+--color-btn-outline-hover: var(--basics-white);
+
+/* Estilos de Location */
+--font-size-location-h3: var(--size-h2-about); /* Reusamos variable */
+--font-size-location-p: 1.1rem;
+--margin-top-location-p: 0.5em;
+--margin-top-location-map: 2em;
+--min-height-map: 400px;
+--background-map-fallback: #E8E8E8;
   /* color */
   --auxiliary-acentos-1: #c55a26;
   --auxiliary-acentos-2: #e3be86;
@@ -80,6 +127,12 @@ body {
 
   --background-testimonials: var(--primary-secciones-1); 
   --background-testimonial-card: var(--basics-white); 
+  --background-input-field: #E8E8E8; /* Color de fondo de los inputs */
+  --color-placeholder: #555;
+  --padding-input-field: 1em;
+  --radius-input-field: 8px;
+  --gap-form-grid: 20px;
+  --height-form-textarea: 180px;
   --margin-bottom-testimonials-h3: 1.7em;
   --gap-testimonials-grid: 90px; 
   --padding-testimonial-card: 30px;
@@ -87,6 +140,17 @@ body {
   --font-style-testimonial-p: italic;
   --margin-top-testimonial-footer: 1.5em;
   --font-size-testimonial-footer: 0.8rem;
+
+  --border-btn-outline: 1px solid var(--basics-black);
+  --color-btn-outline: var(--basics-black);
+  --background-btn-outline-hover: var(--basics-black);
+  --color-btn-outline-hover: var(--basics-white);
+
+  --font-size-location-p: 1.1rem;
+  --margin-top-location-p: 0.5em;
+  --margin-top-location-map: 2em;
+  --min-height-map: 400px;
+  --background-map-fallback: #E8E8E8;
 
   /* Typography */
   --fuente-principal: 'NeueMontreal', sans-serif;
@@ -148,7 +212,7 @@ body {
   --weight-parrafo: Regular;
 
   /* Borders*/
-  --radius-button-radius: 0.625rem;
+  --radius-button-radius: 1rem;
 
   /* alineación */
   --align-items-center: center;
@@ -158,6 +222,7 @@ body {
     
   /* Espaciado de Secciones */
   --spacing-section-vertical: 50px;
+  --spacing-section-vertical-abajo: 30px;
   --padding-section-vertical: 40px;
   --padding-section-horizontal: 40px;
 
@@ -347,7 +412,17 @@ main.page-container {
 }
 
 .services,
-.team,
+.team {
+  grid-column: 2 / span 12; 
+
+  width: auto;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: var(--spacing-section-vertical); 
+  margin-bottom: var(--spacing-section-vertical);
+}
+
 .contact-form,
 .location {
   grid-column: 2 / span 12; 
@@ -356,7 +431,7 @@ main.page-container {
   max-width: none;
   margin-left: 0;
   margin-right: 0;
-  margin-top: var(--spacing-section-vertical); 
+  margin-top: var(--spacing-section-vertical-abajo); 
   margin-bottom: var(--spacing-section-vertical);
 }
 
@@ -568,24 +643,20 @@ main.page-container {
   color: var(--basics-black);
   margin: var(--margin-none);
 }
-
 .testimonials {
   grid-column: 1 / -1;
-
   padding-top: var(--padding-section-vertical);
   padding-bottom: var(--padding-section-vertical);
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: var(--padding-fullwidth-section); 
+  padding-right: var(--padding-fullwidth-section);
   background-color: var(--background-testimonials);
-  
   display: grid;
   grid-template-columns: var(--page-margin-horizontal) repeat(12, 1fr) var(--page-margin-horizontal);
   column-gap: var(--page-column-gap);
 }
 
 .testimonials h3 {
-  grid-column: 2 / span 12; 
-  
+  grid-column: var(--grid-column-content-area); 
   font-family: var(--fuente-secundaria);
   font-size: var(--size-h2-about);
   color: var(--basics-white);
@@ -603,10 +674,9 @@ main.page-container {
 }
 
 .testimonials-container {
-  grid-column: 2 / span 12; 
-  
+  grid-column: var(--grid-column-content-area);
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: var(--grid-template-columns-3-equal);
   gap: var(--gap-testimonials-grid);
 }
 
@@ -614,10 +684,11 @@ main.page-container {
   background-color: var(--background-testimonial-card);
   padding: var(--padding-testimonial-card);
   margin: var(--margin-none);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
+  border-radius: var(--radius-section);
+  display: var(--display-flex);
+  flex-direction: var(--flex-direction-column);
+  justify-content: var(--justify-content-space-between); 
+  height: var(--height-full);
 }
 
 .testimonials blockquote p {
@@ -626,24 +697,184 @@ main.page-container {
   font-style: var(--font-style-testimonial-p);
   color: var(--basics-black);
   margin: var(--margin-none);
-  line-height: 1.6;
+  line-height: var(--line-height-testimonial-p); 
 }
 
 .testimonials blockquote footer {
   font-family: var(--fuente-principal);
   font-size: var(--font-size-testimonial-footer);
-  font-style: normal;
+  font-style: var(--font-style-normal); 
   font-weight: var(--font-weight-bold);
   color: var(--basics-black);
   margin-top: var(--margin-top-testimonial-footer);
 }
 
+
 .contact-form {
   padding: var(--padding-section-vertical) var(--padding-section-horizontal);
   border-radius: var(--radius-section);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--page-column-gap);
+}
+
+.contact-form h3 {
+  grid-column: 1 / -1;
+  font-family: var(--fuente-secundaria);
+  font-size: var(--size-h2-about);
+  color: var(--basics-black);
+  margin: var(--margin-none);
+}
+
+.contact-form h3::before {
+  content: '';
+  display: block;
+  width: var(--width-h2-pseudo);
+  height: var(--height-h2-pseudo);
+  background-color: var(--azul-secundario);
+  margin-bottom: var(--margin-bottom-h2-pseudo);
+}
+
+.contact-form p {
+  grid-column: 1 / -1;
+  font-family: var(--fuente-principal);
+  font-size: var(--size-parrafo);
+  color: var(--basics-black);
+  margin-top: var(--margin-top-contact-p); 
+  margin-bottom: 2.5em; 
+  line-height: var(--line-height-contact-p); 
+}
+
+.contact-form form {
+  grid-column: 2 / span 10;
+  display: grid;
+  grid-template-columns: var(--grid-template-columns-2-equal); 
+  gap: var(--gap-contact-form-internal); 
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group.align-right {
+  display: var(--display-flex);
+  justify-content: flex-end; 
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: var(--width-full);
+  padding: var(--padding-input-field);
+  border: none;
+  background-color: var(--background-input-field);
+  font-family: var(--fuente-principal);
+  font-size: var(--size-parrafo);
+}
+
+.contact-form textarea {
+  min-height: var(--min-height-contact-textarea); 
+  resize: vertical; 
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: var(--color-contact-placeholder); 
+  opacity: 1; 
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.btn.outline {
+  background-color: transparent;
+  border: var(--border-btn-outline);
+  color: var(--color-btn-outline);
+  font-size: var(--font-size-btn-primary);
+  padding: var(--padding-btn);
+  border-radius: var(--radius-button-radius);
+}
+.btn.outline:hover {
+  background-color: var(--background-btn-outline-hover);
+  color: var(--color-btn-outline-hover);
 }
 
 .location {
   padding: var(--padding-section-vertical) var(--padding-section-horizontal);
   border-radius: var(--radius-section);
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  column-gap: var(--page-column-gap);
+  align-items: start;
+}
+
+.location-text {
+  grid-column: 1 / span var(--location-text-columns);
+}
+
+
+.location h3 {
+  font-family: var(--fuente-secundaria);
+  font-size: var(--font-size-location-h3);
+  color: var(--basics-black);
+  margin: var(--margin-none);
+}
+
+.location h3::before {
+  content: '';
+  display: block;
+  width: var(--width-h2-pseudo);
+  height: var(--height-h2-pseudo);
+  background-color: var(--azul-secundario);
+  margin-bottom: var(--margin-bottom-h2-pseudo);
+}
+
+.location p {
+  font-family: var(--fuente-principal);
+  font-size: var(--font-size-location-p);
+  color: var(--basics-black);
+
+  margin-top: var(--margin-top-location-p);
+  line-height: 1.4; 
+  margin-bottom: 0;
+  padding-top: var(--padding-location-p-top); 
+}
+
+.location-map-wrapper {
+  grid-column: calc(var(--location-text-columns) + var(--location-gap-column) + 1) / span var(--location-map-columns);
+}
+
+.location .map {
+  width: var(--width-full);
+  min-height: var(--min-height-map);
+  background-color: var(--background-map-fallback);
+  line-height: 0;
+}
+
+.location .map iframe {
+  width: var(--width-full);
+  height: var(--min-height-map);
+  border: 0;
+  display: block;
+}
+
+.google-maps-link {
+  display: block;
+  text-align: var(--text-align-right);
+  margin-top: var(--margin-top-google-link);
+  font-family: var(--fuente-principal);
+  font-size: var(--font-size-google-link);
+  color: var(--basics-black);
+  text-decoration: none;
+}
+
+.google-maps-link:hover {
+  text-decoration: underline;
 }

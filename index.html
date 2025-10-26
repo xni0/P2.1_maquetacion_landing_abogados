@@ -199,39 +199,55 @@ confiables y eficaces."</p>
       </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section class="contact-form">
+      
+      <section class="contact-form">
       <h3>Consulta gratuita</h3>
       <p>
-        Programar una consulta es fácil. Llámenos directamente o complete el
-        formulario en línea.
+        Programar una consulta es fácil. Puede llamarnos directamente al número proporcionado en <br>
+nuestro sitio web o completar el formulario de contacto en linea
       </p>
+      
       <form action="#" method="POST">
-        <label for="name">Nombre</label>
-        <input type="text" id="name" name="name" />
-        <label for="surname">Apellidos</label>
-        <input type="text" id="surname" name="surname" />
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" />
-        <label for="subject">Título</label>
-        <input type="text" id="subject" name="subject" />
-        <label for="message">Motivo de consulta</label>
-        <textarea id="message" name="message"></textarea>
-        <button type="submit" class="btn primary">Enviar</button>
+        <div class="form-group">
+          <label for="name" class="visually-hidden"></label>
+          <input type="text" id="name" name="name" placeholder="Nombre" />
+        </div>
+        <div class="form-group">
+          <label for="surname" class="visually-hidden"></label>
+          <input type="text" id="surname" name="surname" placeholder="Apellidos" />
+        </div>
+        
+        <div class="form-group">
+          <label for="email" class="visually-hidden"></label>
+          <input type="email" id="email" name="email" placeholder="Email" />
+        </div>
+        <div class="form-group">
+          <label for="subject" class="visually-hidden"></label>
+          <input type="text" id="subject" name="subject" placeholder="Tlf." />
+        </div>
+        
+        <div class="form-group full-width">
+          <label for="message" class="visually-hidden"></label>
+          <textarea id="message" name="message" placeholder="Motivo de consulta"></textarea>
+        </div>
+        
+        <div class="form-group full-width align-right">
+          <button type="submit" class="btn outline">ENVIAR</button>
+        </div>
       </form>
     </section>
 
-    <!-- Location Section -->
     <section class="location">
-      <h3>Dónde encontrarnos</h3>
-      <p>C/ Barcas 31, Valencia CP. 46005</p>
-      <div class="map">
-        <!-- Embed Google Maps iframe or similar -->
-        <iframe src="https://www.google.com/maps/embed?..."></iframe>
+      <div class="location-text"> <h3>Dónde encontrarnos</h3>
+        <p>C/ Barcas 31,<br>Valencia CP. 46005</p>
+      </div>
+      <div class="location-map-wrapper"> <div class="map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3080.1364613029828!2d-0.37630812509779127!3d39.46624577160816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6048b546d5ab2b%3A0x8fd49af44807d4ec!2sCirilo%20Amor%C3%B3s%20Centro%20Empresarial!5e0!3m2!1ses!2ses!4v1761441678657!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <a href="https://www.google.es/maps/place/Cirilo+Amor%C3%B3s+Centro+Empresarial/@39.4662458,-0.3763081,17z/data=!3m2!4b1!5s0xd604f125df03663:0xe69f10300ffa2f53!4m6!3m5!1s0xd6048b546d5ab2b:0x8fd49af44807d4ec!8m2!3d39.4662458!4d-0.3737332!16s%2Fg%2F1tdgr4s0?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="google-maps-link">Ir a Google</a> 
       </div>
     </section>
 
-    </main>
     <!-- Footer -->
     <footer>
       <div class="footer-info">
