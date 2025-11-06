@@ -1,0 +1,261 @@
+
+/* (Este archivo se carga DESPUÉS de style.css) */
+:root {
+  /* Nuevas Variables para Responsive */
+
+  /* Layout */
+  --grid-template-columns-1-col: 1fr;
+  --grid-column-full-width: 1 / -1;
+  --gap-section-stack: 2em;
+  --margin-bottom-footer-stack: 2.5em;
+
+  /* Z-Index */
+  --z-index-header-controls: 1001;
+  --z-index-overlay: 1000;
+
+  /* Menú Móvil */
+  --font-size-hamburger-icon: 2rem;
+  --gap-mobile-nav-links: 25px;
+  --position-fixed: fixed;
+  --height-viewport-full: 100vh;
+  --padding-mobile-nav: 60px 20px 20px 20px;
+  --transform-mobile-nav-hidden: translateX(100%);
+  --transform-mobile-nav-visible: translateX(0);
+  --transition-mobile-nav: transform 0.3s ease-in-out;
+}
+
+/* Ocultamos los elementos móviles en escritorio por defecto */
+.hamburger-menu,
+.mobile-nav {
+  display: var(--border-none, none); 
+}
+
+
+/*  1. TABLET  */
+/* (Se aplica desde 1200px hacia abajo) */
+@media (max-width: 1200px) {
+  :root {
+    /* Sobrescribimos variables existentes para tablet */
+    --page-margin-horizontal: 60px;
+    --font-size-footer-h4: 0.8rem;
+    --font-size-footer-link: 0.75rem;
+
+    /* Columnas del Footer para Tablet (2x2) */
+    --footer-info-columns: 2 / span 6;
+    --footer-nav-columns: 8 / span 5;
+    --footer-logo-columns: 2 / span 6;
+    --footer-newsletter-columns: 8 / span 5;
+  }
+
+  /*  Sección 'About'  */
+  .about {
+    grid-template-columns: var(--grid-template-columns-1-col);
+    gap: var(--gap-section-stack);
+  }
+  .about article {
+    grid-column: var(--grid-column-full-width);
+    margin-bottom: var(--margin-none);
+  }
+  .about aside {
+    grid-column: var(--grid-column-full-width);
+  }
+
+  /*  Sección 'Team'  */
+  .team {
+    grid-template-columns: var(--grid-template-columns-1-col);
+    gap: var(--gap-section-stack);
+  }
+  .team-text-wrapper {
+    grid-column: var(--grid-column-full-width);
+    margin-bottom: var(--margin-none);
+  }
+  .team-members {
+    grid-column: var(--grid-column-full-width);
+  }
+  .team-grid {
+    /* Reutilizamos variable existente del :root de style.css */
+    grid-template-columns: var(--grid-template-columns-2-equal);
+  }
+
+  /*  Sección 'Testimonials'  */
+  .testimonials-container {
+    /* Reutilizamos variable existente */
+    grid-template-columns: var(--grid-template-columns-2-equal);
+    gap: var(--page-column-gap);
+  }
+
+  /*  Sección 'Location'  */
+  .location {
+    grid-template-columns: var(--grid-template-columns-1-col);
+    gap: var(--gap-section-stack);
+  }
+  .location-text {
+    grid-column: var(--grid-column-full-width);
+    margin-bottom: var(--margin-none);
+  }
+  .location-map-wrapper {
+    grid-column: var(--grid-column-full-width);
+  }
+
+  /* --- Footer --- */
+  .footer-info, .footer-nav, .footer-logo, .newsletter {
+    grid-row: auto;
+  }
+  .footer-info, .footer-logo {
+    margin-bottom: var(--margin-bottom-footer-stack);
+  }
+
+}
+
+
+/*  MÓVIL  */
+/* (Se aplica desde 768px hacia abajo) */
+@media (max-width: 768px) {
+  :root {
+    /* Sobrescribimos variables para móvil */
+    --page-margin-horizontal: 20px;
+    --size-h1: 2rem;
+    --size-h2: 1.8rem;
+    --size-h3: 1.5rem;
+    --font-size-nav-links: 1.2rem; /* Fuente más grande para menú móvil */
+
+     /* Columnas del footer para móvil */
+    --footer-info-columns: 2 / span 12;
+    --footer-nav-columns: 2 / span 12;
+    --footer-logo-columns: 2 / span 12;
+    --footer-newsletter-columns: 2 / span 12;
+  }
+
+  /* Quitamos <br> que molestan en móvil */
+  .hero-content h1 br,
+  .hero-content p br,
+  .about article h2 br,
+  .about article p br,
+  .services-intro h3 br,
+  .services-intro p br,
+  .testimonials h3 br,
+  .contact-form p br,
+  .location-text p br {
+    display: none;
+  }
+
+  /* MENÚ HAMBURGUESA */
+  .nav-links {
+    display: none; 
+  }
+
+  /* 3. Estilos del botón */
+  .hamburger-menu {
+    display: var(--display-block);
+    font-size: var(--font-size-hamburger-icon);
+    color: var(--basics-white);
+    background: var(--background-transparent);
+    border: var(--border-none);
+    cursor: pointer;
+    z-index: var(--z-index-header-controls);
+  }
+
+  /* 4. Estilos del menú móvil desplegable */
+  .mobile-nav {
+    display: var(--display-flex);
+    flex-direction: var(--flex-direction-column);
+    align-items: var(--align-items-center);
+    justify-content: var(--justify-content-center);
+    gap: var(--gap-mobile-nav-links);
+    position: var(--position-fixed);
+    top: 0;
+    left: 0;
+    width: var(--width-full);
+    height: var(--height-viewport-full);
+    background-color: var(--primary-secciones-1);
+    padding: var(--padding-mobile-nav);
+    box-sizing: var(--box-sizing-border-box);
+    z-index: var(--z-index-overlay);
+    
+    transform: var(--transform-mobile-nav-hidden);
+    transition: var(--transition-mobile-nav);
+  }
+
+  .mobile-nav.is-active {
+    transform: var(--transform-mobile-nav-visible);
+  }
+
+  .mobile-nav a {
+    color: var(--basics-white);
+    text-decoration: var(--text-decoration-none);
+    font-size: var(--font-size-nav-links);
+    font-weight: var(--font-weight-bold);
+  }
+
+  /* --- Hero --- */
+  .hero-buttons {
+    flex-direction: var(--flex-direction-column);
+    align-items: var(--align-items-flex-start);
+  }
+  .btn.primary, .btn.secondary {
+    width: var(--width-full);
+    text-align: var(--text-align-center);
+    box-sizing: var(--box-sizing-border-box);
+  }
+  .hero-content {
+    text-align: left;
+  }
+
+  /* --- Secciones Generales --- */
+  .services-image {
+    width: var(--width-full);
+    margin-left: var(--margin-none);
+  }
+
+  .services-intro {
+    padding: var(--padding-section-vertical) var(--padding-section-horizontal);
+    text-align: var(--text-align-center);
+  }
+
+  .services-intro .btn {
+     width: var(--width-full);
+     box-sizing: var(--box-sizing-border-box);
+  }
+
+
+  /* --- Team --- */
+  .team-grid {
+    grid-template-columns: var(--grid-template-columns-1-col);
+  }
+
+  /* --- Testimonials --- */
+  .testimonials-container {
+    grid-template-columns: var(--grid-template-columns-1-col);
+  }
+  .testimonials h3 {
+    text-align: var(--text-align-center);
+  }
+  .testimonials h3::before {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  /* --- Formulario de Contacto --- */
+  .contact-form form {
+    grid-template-columns: var(--grid-template-columns-1-col);
+    grid-column: var(--grid-column-full-width);
+  }
+
+  /* --- Footer --- */
+  .footer-info,
+  .footer-nav,
+  .footer-logo,
+  .newsletter {
+    margin-bottom: var(--gap-section-stack);
+    text-align: var(--text-align-center);
+    align-items: var(--align-items-center);
+  }
+  .newsletter form {
+    align-items: var(--align-items-center);
+  }
+  .newsletter button {
+    width: var(--width-full);
+    box-sizing: var(--box-sizing-border-box);
+  }
+}

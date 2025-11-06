@@ -964,8 +964,6 @@ footer a {
   font-size: var(--font-size-footer-link);
 }
 
-
-
 .footer-info {
   grid-column: var(--footer-info-columns);
   display: var(--display-flex);
