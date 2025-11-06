@@ -110,7 +110,7 @@
 
 /*  MÓVIL  */
 /* (Se aplica desde 768px hacia abajo) */
-@media (max-width: 768px) {
+@media (max-width: 767px){
   :root {
     /* Sobrescribimos variables para móvil */
     --page-margin-horizontal: 20px;
